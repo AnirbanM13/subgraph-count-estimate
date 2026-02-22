@@ -12,7 +12,7 @@ M <- 2000 # Number of iterations
 N.main <- 20000 # Number of nodes in the population network
 
 fname_sim_1 <- sprintf(
-  "/home/anirbanm/Documents/data-sim-1-final/sim-1-iter-%d.Rdata",
+  "/data-sim-1-final/sim-1-iter-%d.Rdata",
   1:M
 )
 
@@ -20,10 +20,10 @@ fname_sim_1 <- sprintf(
 ## Source external files
 ############################################################
 
-source("~/Desktop/r-file/var-exp-final.R")
-source("~/Desktop/r-file/bethe_hessian_clustering.R")
-Rcpp::sourceCpp("Desktop/r-file/edge-list-to-adj-mat-conv-1.cpp")
-Rcpp::sourceCpp("Desktop/r-file/pi_hat.cpp")
+source("var-exp-final.R")
+source("bethe_hessian_clustering.R")
+Rcpp::sourceCpp("edge-list-to-adj-mat-conv-1.cpp")
+Rcpp::sourceCpp("pi_hat.cpp")
 
 ############################################################
 ## Helper functions
