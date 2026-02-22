@@ -12,7 +12,7 @@ N.main <- 1e5
 beta <- 1/2
 
 fname_sim_2 <- sprintf(
-  "/home/anirbanm/Documents/data-sim-2-final/test-sim-1-iter-%d.Rdata",
+  "/data-sim-2-final/test-sim-1-iter-%d.Rdata",
   1:M
 )
 
@@ -27,7 +27,7 @@ Pi.mat <- rbind(
 ## Source files
 ############################################################
 
-source("~/Desktop/r-file/var-exp-final.R")
+source("var-exp-final.R")
 
 ############################################################
 ## Helper functions
