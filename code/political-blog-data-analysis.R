@@ -34,11 +34,11 @@ edges_clean <- unique(edges_clean)
 # Compile C++ + Load R Files
 ############################################################
 
-Rcpp::sourceCpp("Desktop/r-file/edge-list-to-adj-mat-conv-1.cpp")
-Rcpp::sourceCpp("Desktop/r-file/pi_hat.cpp")
+Rcpp::sourceCpp("edge-list-to-adj-mat-conv-1.cpp")
+Rcpp::sourceCpp("pi_hat.cpp")
 
-source("~/Desktop/r-file/bethe_hessian_clustering.R")
-source("~/Desktop/r-file/var-exp-final.R")
+source("bethe_hessian_clustering.R")
+source("var-exp-final.R")
 
 ############################################################
 # Build Adjacency Matrix
