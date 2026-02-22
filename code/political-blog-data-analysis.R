@@ -44,7 +44,7 @@ source("~/Desktop/r-file/var-exp-final.R")
 # Build Adjacency Matrix
 ############################################################
 
-A <- edge_list_to_adj_unique(edges_clean, directed = FALSE)
+A <- edge_list_to_adj_unique(edges_clean, directed = FALSE) # make the network undirected
 
 N <- length(unique(c(edges_clean$from, edges_clean$to)))
 
