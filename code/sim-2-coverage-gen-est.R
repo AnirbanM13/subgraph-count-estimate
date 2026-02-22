@@ -13,7 +13,7 @@ N.main <- 1e5
 beta <- 1/2
 
 fname_sim_2 <- sprintf(
-  "/home/anirbanm/Documents/data-sim-2-final/test-sim-1-iter-%d.Rdata",
+  "/data-sim-2-final/test-sim-1-iter-%d.Rdata",
   1:M
 )
 
@@ -21,10 +21,10 @@ fname_sim_2 <- sprintf(
 ## Source external files
 ############################################################
 
-source("~/Desktop/r-file/var-exp-final.R")
-source("~/Desktop/r-file/bethe_hessian_clustering.R")
-Rcpp::sourceCpp("Desktop/r-file/edge-list-to-adj-mat-conv-1.cpp")
-Rcpp::sourceCpp("Desktop/r-file/pi_hat.cpp")
+source("var-exp-final.R")
+source("bethe_hessian_clustering.R")
+Rcpp::sourceCpp("edge-list-to-adj-mat-conv-1.cpp")
+Rcpp::sourceCpp("pi_hat.cpp")
 
 ############################################################
 ## Helper functions
