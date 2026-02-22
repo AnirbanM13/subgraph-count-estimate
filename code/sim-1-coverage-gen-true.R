@@ -12,7 +12,7 @@ M <- 2000
 N.main <- 20000
 
 fname_sim_1 <- sprintf(
-  "/home/anirbanm/Documents/data-sim-1-final/sim-1-iter-%d.Rdata",
+  "/data-sim-1-final/sim-1-iter-%d.Rdata",
   1:M
 )
 
@@ -23,7 +23,7 @@ Pi.mat <- rbind(c(0.2, 0.05), c(0.05, 0.1))
 ## Source files
 ############################################################
 
-source("~/Desktop/r-file/var-exp-final.R")
+source("var-exp-final.R")
 
 ############################################################
 ## Helper functions
