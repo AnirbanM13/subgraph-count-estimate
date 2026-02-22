@@ -3,18 +3,18 @@ library(Rcpp)
 
 Sys.setenv("PKG_CXXFLAGS"="-O3 -march=native -fopenmp")
 Sys.setenv("PKG_LIBS"="-fopenmp")
-sourceCpp("sim-3-data-gen-engine.cpp")
+sourceCpp("toy-openMP-2.cpp")
 
-N.main <- 5*1e5
+N.main <- 2*1e5
 al.vec <- c(rep(1,N.main/2), rep(2,N.main/2))
 beta <- 1/2
 alpha <- 1/4
-Pi.mat <- rbind(c(0.5, 0.05), c(0.05, 0.2))/(N.main^(beta))
+Pi.mat <- rbind(c(1, 0.1), c(0.1, 3))/(N.main^(beta))
 #Pi.mat <- rbind(c(0.2, 0.05), c(0.05, 0.1))
 
 
 
-p.vec = 0.25/(N.main^(alpha))
+p.vec = 0.04/(N.main^(alpha))
 M = 2000
 
 # Print start time
@@ -44,5 +44,6 @@ overall_end <- Sys.time()
 total_elapsed <- difftime(overall_end, overall_start, units = "secs")
 cat("Code ended at:", format(overall_end), "\n")
 cat("Total runtime:", total_elapsed, "seconds\n")
+
 
 
