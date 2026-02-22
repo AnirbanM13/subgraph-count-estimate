@@ -3,7 +3,7 @@ library(Rcpp)
 
 Sys.setenv("PKG_CXXFLAGS"="-fopenmp")
 Sys.setenv("PKG_LIBS"="-fopenmp")
-sourceCpp("sim-1-2-data-gen-engine.cpp")
+sourceCpp("sim-1-2-3-data-gen-engine.cpp")
 
 N.main <- 1e5
 al.vec <- c(rep(1,N.main/2), rep(2,N.main/2))
