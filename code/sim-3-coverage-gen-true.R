@@ -17,7 +17,7 @@ alpha <- 1/4
 p.vec <- 0.04 / (N.main^alpha)
 
 fname_sim_3 <- sprintf(
-  "/home/anirbanm/Documents/sim-3-final/test-sim-3-iter-%d.Rdata",
+  "/sim-3-final/test-sim-3-iter-%d.Rdata",
   1:M
 )
 
@@ -32,7 +32,7 @@ Pi.mat <- rbind(
 ## Source variance file
 ############################################################
 
-source("~/Desktop/r-file/var-exp-final.R")
+source("var-exp-final.R")
 
 ############################################################
 ## Helper functions
