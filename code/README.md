@@ -58,9 +58,9 @@ These functions operate on graph structures:
 
 * Computes a weighted sum over vertex covers:
 
-  [
+  $
   \sum p^{|C|}(1-p)^{(2R - t - |C|)}
-  ]
+  $
 
 #### `get_all_vertex_covers`
 
