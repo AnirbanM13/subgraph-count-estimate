@@ -1,4 +1,4 @@
-# var_H: Variance Computation for Graph-Based Random Models
+# var_H: Variance Computation 
 
 ## Overview
 
