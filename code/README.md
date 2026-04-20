@@ -1,3 +1,201 @@
+# Function needed for checking assumption 5
+## Overview
+
+This project provides a framework for analyzing structural properties of graphs using adjacency matrices. It focuses on:
+
+* Constructing extremal induced subgraphs ( G_t(H) )
+* Computing minimum vertex covers
+* Studying inclusion relationships between vertex sets
+* Verifying the **A5 condition** across all subset sizes
+
+---
+
+## Core Idea
+
+Given a graph ( H ) and an integer ( t ):
+
+1. Generate all subsets of vertices of size ( t )
+2. Find induced subgraphs on these subsets
+3. Select those with the **maximum number of edges**
+4. Compare these vertex sets with **minimum vertex covers**
+
+---
+
+## Functions
+
+---
+
+### 1. `construct_G_t_H(adj_matrix, t)`
+
+Constructs the extremal induced subgraphs ( G_t(H) ).
+
+#### Steps
+
+1. Generate all ( t )-vertex subsets
+2. Compute induced subgraphs
+3. Count edges in each subgraph
+4. Select subgraphs with maximum edge count
+
+#### Returns
+
+* `max_edges`: Maximum number of edges among all ( t )-subgraphs
+* `G_t_H`: List of extremal subgraphs, each containing:
+
+  * `vertices`: Vertex indices
+  * `adj`: Adjacency matrix of subgraph
+  * `edges`: Number of edges
+
+#### Example
+
+```r
+result <- construct_G_t_H(adj1, t = 4)
+
+print(result$max_edges)
+print(result$G_t_H)
+```
+
+---
+
+### 2. `analyze_graph_relation(adj_matrix, t)`
+
+Analyzes relationships between:
+
+* Extremal vertex sets ( V \in G_t(H) )
+* Minimum vertex covers ( D )
+
+#### Cases
+
+* **If ( t > \tau(H) )** → Check: ( D \subseteq V )
+* **If ( t < \tau(H) )** → Check: ( V \subseteq D )
+* **If ( t = \tau(H) )** → Check: ( D = V )
+
+#### Returns
+
+* Case type
+* Minimum vertex cover size ( \tau(H) )
+* All extremal vertex sets
+* All minimum vertex covers
+* Matching pairs satisfying conditions
+
+---
+
+### 3. `check_A5_condition(adj_matrix)`
+
+Checks whether graph ( H ) satisfies the **A5 condition**.
+
+#### Logic
+
+* Iterate over all ( t = 1 ) to ( n )
+* Run `analyze_graph_relation`
+* If any ( t ) fails → A5 is **not satisfied**
+
+#### Output
+
+```r
+A5 is satisfied for all t
+```
+
+or
+
+```r
+A5 is NOT satisfied (failed at t = X)
+```
+
+---
+
+### 4. `path_adj_matrix(n)`
+
+Generates adjacency matrix of path graph ( P_n ).
+
+---
+
+## Example Graphs
+
+### Graph 1 (5 vertices)
+
+```r
+adj <- matrix(c(
+  0,1,1,0,0,
+  1,0,1,0,0,
+  1,1,0,1,1,
+  0,0,1,0,0,
+  0,0,1,0,0
+), nrow = 5, byrow = TRUE)
+```
+
+### Graph 2 (6 vertices)
+
+```r
+adj1 <- matrix(c(
+  0,1,1,0,0,0,
+  1,0,1,0,0,0,
+  1,1,0,1,0,0,
+  0,0,1,0,1,1,
+  0,0,0,1,0,1,
+  0,0,0,1,1,0
+), nrow = 6, byrow = TRUE)
+```
+
+---
+
+## Example Usage
+
+```r
+# Construct G_t(H)
+result <- construct_G_t_H(adj1, t = 4)
+
+# Analyze relations
+analyze_graph_relation(adj1, t = 4)
+
+# Check A5 condition
+check_A5_condition(adj1)
+```
+
+---
+
+## Dependencies
+
+You must provide:
+
+* `find_min_vertex_covers(adj_matrix)`
+
+---
+
+## Complexity Notes
+
+* Generating all subsets: ( O(\binom{n}{t}) )
+* Vertex cover computation: NP-hard
+* Overall runtime grows rapidly with graph size
+
+---
+
+## Interpretation of Results
+
+| Relation | Meaning                            |
+| -------- | ---------------------------------- |
+| D ⊆ V    | Cover is contained in extremal set |
+| V ⊆ D    | Extremal set lies inside cover     |
+| D = V    | Exact match                        |
+
+---
+
+## Summary
+
+This project connects:
+
+* Extremal subgraph theory
+* Vertex cover structure
+* Combinatorial conditions (A5)
+
+It can be used for:
+
+* Theoretical graph research
+* Testing conjectures
+* Structural graph analysis
+
+---
+
+
 # Assumption 5 Checker
 
 ## Overview
