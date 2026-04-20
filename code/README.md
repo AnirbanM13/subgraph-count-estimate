@@ -1,3 +1,151 @@
+# Assumption 5 Checker
+
+## Overview
+
+This project provides tools for analyzing structural relationships in graphs using their adjacency matrices. It focuses on comparing:
+
+* Vertex sets derived from a constructed graph ( G_t(H) )
+* Minimum vertex covers of the original graph ( H )
+
+It also verifies whether a graph satisfies a specific theoretical condition referred to as **A5**.
+
+---
+
+## Features
+
+* Construct and analyze ( G_t(H) ) (external dependency)
+* Compute minimum vertex covers of a graph
+* Compare relationships between:
+
+  * Vertex sets ( V )
+  * Minimum vertex covers ( D )
+* Automatically classify cases based on:
+
+  * ( t > \tau(H) )
+  * ( t < \tau(H) )
+  * ( t = \tau(H) )
+* Validate the **A5 condition** across all values of ( t )
+
+---
+
+## Definitions
+
+* **Adjacency Matrix**: Matrix representation of a graph.
+* **Vertex Cover**: A set of vertices such that every edge is incident to at least one vertex in the set.
+* **Minimum Vertex Cover**: Vertex cover of smallest possible size.
+* **( \tau(H) )**: Size of a minimum vertex cover of graph ( H ).
+* **( G_t(H) )**: A derived graph depending on parameter ( t ) (constructed via `construct_G_t_H()`).
+
+---
+
+## Functions
+
+### 1. `analyze_graph_relation(adj_matrix, t)`
+
+Analyzes the relationship between:
+
+* Vertex sets from ( G_t(H) )
+* Minimum vertex covers of ( H )
+
+#### Behavior
+
+Depending on ( t ) and ( \tau(H) ):
+
+* **Case 1:** ( t > \tau(H) ) → checks if ( D \subseteq V )
+* **Case 2:** ( t < \tau(H) ) → checks if ( V \subseteq D )
+* **Case 3:** ( t = \tau(H) ) → checks if ( D = V )
+
+#### Returns
+
+A list containing:
+
+* `type`: Case classification
+* `tau`: Minimum vertex cover size
+* `Gt_vertices`: Vertex sets from ( G_t(H) )
+* `min_vertex_covers`: All minimum vertex covers
+* `matches`: Valid pairs satisfying the condition
+
+---
+
+### 2. `check_A5_condition(adj_matrix)`
+
+Checks whether the graph satisfies the **A5 condition**.
+
+#### Logic
+
+* Iterates over all ( t = 1 ) to ( n ) (number of vertices)
+* Calls `analyze_graph_relation()` for each ( t )
+* If any ( t ) fails → A5 is **not satisfied**
+* If all pass → A5 is **satisfied**
+
+#### Returns
+
+* `TRUE` → A5 satisfied
+* `FALSE` → A5 not satisfied
+
+---
+
+### 3. `path_adj_matrix(n)`
+
+Generates the adjacency matrix for a **path graph ( P_n )**.
+
+#### Example
+
+```
+P4 <- path_adj_matrix(4)
+```
+
+---
+
+## Example Usage
+
+```r
+# Create path graphs
+P4 <- path_adj_matrix(4)
+P5 <- path_adj_matrix(5)
+P6 <- path_adj_matrix(6)
+
+# Check A5 condition
+check_A5_condition(P4)
+check_A5_condition(P5)
+check_A5_condition(P6)
+```
+
+---
+
+## Dependencies
+
+The following functions must be implemented separately:
+
+* `construct_G_t_H(adj_matrix, t)`
+* `find_min_vertex_covers(adj_matrix)`
+
+---
+
+## Output Interpretation
+
+* `"D ⊆ V"` → Minimum vertex cover is contained in ( V )
+* `"V ⊆ D"` → Vertex set is contained in minimum cover
+* `"D = V"` → Exact match
+
+If no matches are found:
+
+```
+No V satisfies the condition.
+```
+
+---
+
+## Notes
+
+* Performance depends heavily on the implementation of:
+
+  * Vertex cover computation
+  * ( G_t(H) ) construction
+* Minimum vertex cover is an NP-hard problem, so large graphs may be computationally expensive.
+
+
+
 # var_H: Variance Computation 
 
 ## Overview
