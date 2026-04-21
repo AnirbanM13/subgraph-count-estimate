@@ -248,33 +248,14 @@ Expected samples: 50
 
 ## Appendix
 
-* Variance formulas: Appendix E
+* Variance formulas: Appendix E of 
 * Clustering coefficient variance: Section on clustering coefficient
+* For more detail see https://arxiv.org/abs/2407.19191.
 
 Additional subgraph cases:
 
 * $K_{1,R-1}$
 * $K_R$
-
----
-
-## Usage
-
-This README is intended for:
-
-* Academic research documentation
-* Simulation study replication
-* Understanding asymptotic inference in network sampling
-
----
-
-## Author Notes
-
-Assumes familiarity with:
-
-* Random graph theory
-* Stochastic Block Models (SBM)
-* Asymptotic statistics
 
 ---
 
